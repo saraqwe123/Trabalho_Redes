@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <form action="" class="container" id="icontainer">
+        <label for="">Endereço ip</label>
+        <input type="text" id="iip" name="ip" maxlength="15">
+        <br>
+        <label for="">Máscara</label>
+        <input type="Number" name="" id="imascara" min="0" max="32">
+        <br>
+        <label for="">Qtd de Hosts</label>
+        <input type="Number" id="ihost" name="host" min="1">
+        <br>
+        <button id="ibotao">Calcular</button>
+    </form>
+    <div id="icontainer2" class="container2" style="display: none;">
+        <header>
+            <p>subrede</p> 
+            <p>Endereço</p>  
+            <p>Intervalo</p>  
+            <p>1 end valido</p> 
+            <p>ult end valido</p>  
+            <p>mascara</p>
+        </header>
+        <ul id="iul">
+
+        </ul>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
