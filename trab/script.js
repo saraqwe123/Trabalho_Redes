@@ -36,14 +36,20 @@ function cria_lista() {
 }
 
 function calcula_mascara() {
+    let nova_masc = ""
     for (let i = 0; i < parseFloat(hosts.value); i++){
         if (2 ** i >= parseFloat(hosts.value)) {
-            let li = ul.children[i]
-            let p6 = document.createElement("p6")
-            p6.textContent = mascara.value - (2 ** i)
-            li.appendChild(p6)
+            nova_masc = 2 ** i
+            console.log(nova_masc)
             break
         }
+    }
+    for (let i = 0; i <= parseFloat(hosts.value); i++){
+        let li = ul.children[i]
+        let p6 = document.createElement("p6")
+        p6.textContent = mascara.value - nova_masc
+        li.appendChild(p6)
+        break
     }
 }
 
