@@ -5,21 +5,33 @@ let ip = document.getElementById("iip")
 let hosts = document.getElementById("ihost")
 let mascara = document.getElementById("imascara")
 let ul = document.getElementById("iul")
+let mascara_convertida = ""
 
 function muda_div(event) {
     event.preventDefault();
     if (event.target === botinho && ip.value.trim() != "" && hosts.value.trim() != "" && hosts.value.trim() >= 1 && mascara.value.trim() >= 0 && mascara.value.trim() <= 32) {
         formulario.style.display = "none"
         container2.style.display = "flex"
-        cria_lista()
-        calcula_mascara()
+        transforma_masc()
+
     }
     else {
         alert("preencha tudo corretamente")
     }
 }
 
-function cria_lista() {
+function Transforma_bin() {
+    return ip.split('.').map(num => ('00000000' + parseInt(num, 10).toString(2)).slice(-8)).join(''); //separando o ip pelos . em seguida transformando os numeros em inteiros e dps pra strings binárias e o slice p tirar os pontos
+}
+
+function transforma_masc() {
+    for (let i = 0; i <= parseFloat(mascara.value);) {
+        mascara_convertida = "1"
+        console.log(mascara_convertida)
+    }
+}
+
+/*function cria_lista() {
     if (hosts.value != "") {
         for (let i = 0; i < parseFloat(hosts.value); i++) {
             var li = document.createElement("li")
@@ -51,6 +63,6 @@ function calcula_mascara() {
         li.appendChild(p6)
         break
     }
-}
+}*/
 
 botinho.addEventListener("click", muda_div)
