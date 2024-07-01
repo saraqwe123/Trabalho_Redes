@@ -17,26 +17,20 @@ function muda_div(event) {
     if (event.target === botinho && ip.value.trim() != "" && hosts.value.trim() != "" && hosts.value.trim() >= 1 && mascara.value.trim() >= 0 && mascara.value.trim() <= 32) {
         formulario.style.display = "none"
         container2.style.display = "flex"
-        for (let i = 0; i < parseInt(hosts.value.trim()); i++) {
-            intervalo()
-            endereco_subrede()
-            calc_1endvalido()
-            ultendvalido()
-            calcula_mascara()
-            mostrar()
-        }
-    }
-    else {
-        alert("preencha tudo corretamente")
+        intervalo()
+        endereco_subrede()
+        calc_1endvalido()
+        ultendvalido()
+        calcula_mascara()
+        mostrar()
     }
 }
-
 
 function intervalo() {
     let contador = []
     let numIntervalo = [1, 2, 4, 8, 16, 32, 64, 128]
     let intervalo = Math.floor(255 / hosts.value)
-    intIntervalo = intervalo    
+    intIntervalo = intervalo
     for (let i of numIntervalo) {
         contador.push(Math.abs(intIntervalo - i))
     }
@@ -68,11 +62,13 @@ function endereco_subrede() {
 
 
 function calc_1endvalido() {
-    let divisao = ip.value.split(".")
-    let ultimo_numero = parseInt(divisao[3], 10)
-    divisao[3] = (ultimo_numero + 1).toString()
-    primeiro_end = divisao.join(".")
-    console.log("1º endereço ip: ", primeiro_end)
+    for (let i = 0; i < parseInt(hosts.value.trim()); i++) {
+        let divisao = ip.value.split(".")
+        let ultimo_numero = parseInt(divisao[3], 10)
+        divisao[3] = (ultimo_numero + 1).toString()
+        primeiro_end = divisao.join(".")
+        console.log("1º endereço ip: ", primeiro_end)
+    }
 }
 
 
@@ -84,6 +80,9 @@ function ultendvalido() {
     console.log("ultimo endereço ip: ", ultimo_end)
     return ultimo_end
 }
+
+
+
 
 
 function mostrar() {
