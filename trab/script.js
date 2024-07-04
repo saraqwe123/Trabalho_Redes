@@ -95,8 +95,8 @@ function subrede() {
     let novo_ult_ip = ult_ip + intIntervalo; //adc o intervalo p alterar o valor a cada subred
     console.log(novo_ult_ip); //teste
     ip_split.pop(); //removendo
-    ip_split.push(novo_ult_ip.toString()); //adc
-    let novo_end_ip = ip_split.join("."); //voltando
+    ip_split.push(novo_ult_ip.toString()); //adc no fim de ip_split e transformando em string
+    let novo_end_ip = ip_split.join("."); //juntando novamente, pois antes tinhamos separado por póntos
     sub_rede.push(novo_end_ip); //adc
     ip_atual = novo_end_ip;
   }
@@ -105,32 +105,32 @@ function subrede() {
 
 function primeiro_valido() {
   for (i = 0; i < hosts.value; i++) {
-    let ip_split = sub_rede[i].split(".");
-    let ult_ip = parseInt(ip_split.slice(-1));
-    let novo_ult_ip = ult_ip + 1;
-    console.log(novo_ult_ip);
-    ip_split.pop();
-    ip_split.push(novo_ult_ip.toString());
-    let novo_end_ip = ip_split.join(".");
-    primeiro_end.push(novo_end_ip);
+    let ip_split = sub_rede[i].split("."); //pegando o endereço ip correto
+    let ult_ip = parseInt(ip_split.slice(-1)); // pegando o ultimo elemento de ult_ip
+    let novo_ult_ip = ult_ip + 1; //somando 1
+    console.log(novo_ult_ip); //testes
+    ip_split.pop(); //removendo o ultimo
+    ip_split.push(novo_ult_ip.toString()); //adc e passando p string
+    let novo_end_ip = ip_split.join("."); //acabando com a separacao por pontos 
+    primeiro_end.push(novo_end_ip);  //adc o novo final
   }
   console.log(primeiro_end);
 }
 
 function ultimo_valido() {
   for (i = 0; i < hosts.value; i++) {
-    let ip_split = primeiro_end[i].split(".");
-    let ult_ip = parseInt(ip_split.slice(-1));
-    let novo_ult_ip = ult_ip + (intIntervalo - 2);
+    let ip_split = primeiro_end[i].split("."); 
+    let ult_ip = parseInt(ip_split.slice(-1)); //transformando em inteiro e pegando o ultimo elemento
+    let novo_ult_ip = ult_ip + (intIntervalo - 2); //somando o ultimo elemento com o valor de intervslo menos 2
     console.log(novo_ult_ip);
-    ip_split.pop();
-    ip_split.push(novo_ult_ip.toString());
-    if (novo_ult_ip >= 256){
+    ip_split.pop(); //removendo 
+    ip_split.push(novo_ult_ip.toString()); //adc
+    if (novo_ult_ip >= 256){ //transformando pra 255 caso o valor ultrapasse o mesmo
       novo_ult_ip = 255
       break
     }
-    let novo_end_ip = ip_split.join(".");
-    ultimo_end.push(novo_end_ip);
+    let novo_end_ip = ip_split.join("."); //removendo a separacao
+    ultimo_end.push(novo_end_ip); //adc
 
   }
   console.log(ultimo_end);
